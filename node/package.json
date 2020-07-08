@@ -1,0 +1,14 @@
+{
+  "name": "node-demo",
+  "version": "1.0.0",
+  "description": "node demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "li",
+  "license": "ISC",
+  "dependencies": {
+    "username": "^5.1.0"
+  }
+}
