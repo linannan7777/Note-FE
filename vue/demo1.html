@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app" >
+    {{text}}
+    <p v-for="item in 5">
+      <span>{{item}}</span>
+    </p>
+  </div>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script>
+    const vm = new Vue({
+      data:{
+        text: '123',
+        text1: '123444',
+        text2: '123111',
+        p: '<p>hahhah</p>'
+      }
+    })
+    vm.$mount('#app')
+  </script>
+</body>
+</html>
