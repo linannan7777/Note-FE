@@ -63,7 +63,7 @@ promise.then(() => {
   console.log(3);
 });
 console.log(4);
-复制代码
+
 ```
 
 过程分析
@@ -123,7 +123,7 @@ fn().then(res => {
   console.log(res)
 })
 console.log('start')
-复制代码
+
 ```
 
 这道题里最先执行的是`'start'`吗 🤔️ ？
@@ -180,7 +180,7 @@ Promise.resolve().then(() => {
   console.log('resolve')
 })
 console.log('end')
-复制代码
+
 ```
 
 过程分析：
@@ -198,7 +198,7 @@ console.log('end')
 'end'
 'resolve'
 'time'
-复制代码
+
 ```
 
 #### 2.2 题目二
@@ -217,7 +217,7 @@ promise.then((res) => {
   console.log(res);
 });
 console.log(4);
-复制代码
+
 ```
 
 过程分析：
@@ -243,7 +243,7 @@ console.log(4);
 "timerStart"
 "timerEnd"
 "success"
-复制代码
+
 ```
 
 #### 2.3 题目三
@@ -263,7 +263,7 @@ setTimeout(() => {
   console.log('timer2')
 }, 0)
 console.log('start')
-复制代码
+
 ```
 
 **(2)**:
@@ -279,7 +279,7 @@ setTimeout(() => {
   console.log('timer2')
 }, 0)
 console.log('start')
-复制代码
+
 ```
 
 **执行结果：**
@@ -289,12 +289,12 @@ console.log('start')
 'timer1'
 'timer2'
 'timer3'
-复制代码
+
 'start'
 'timer1'
 'promise'
 'timer2'
-复制代码
+
 ```
 
 这两个例子，看着好像只是把第一个定时器中的内容换了一下而已。
@@ -323,7 +323,7 @@ const timer1 = setTimeout(() => {
   })
 }, 0)
 console.log('start');
-复制代码
+
 ```
 
 这道题稍微的难一些，在`promise`中执行定时器，又在定时器中执行`promise`；
@@ -353,7 +353,7 @@ console.log('start');
 'timer1'
 'promise2'
 'timer2'
-复制代码
+
 ```
 
 如果感觉有点绕的话，可以看下面这张图，就一目了然了。
@@ -381,7 +381,7 @@ setTimeout(() => {
   console.log('promise1', promise1)
   console.log('promise2', promise2)
 }, 2000)
-复制代码
+
 ```
 
 过程分析：
@@ -407,7 +407,7 @@ setTimeout(() => {
 test5.html:102 Uncaught (in promise) Error: error!!! at test.html:102
 'promise1' Promise{<resolved>: "success"}
 'promise2' Promise{<rejected>: Error: error!!!}
-复制代码
+
 ```
 
 #### 2.5 题目五
@@ -432,7 +432,7 @@ setTimeout(() => {
   console.log("promise1", promise1);
   console.log("promise2", promise2);
 }, 2000);
-复制代码
+
 ```
 
 结果：
@@ -446,7 +446,7 @@ test5.html:102 Uncaught (in promise) Error: error!!! at test.html:102
 'timer2'
 'promise1' Promise{<resolved>: "success"}
 'promise2' Promise{<rejected>: Error: error!!!}
-复制代码
+
 ```
 
 ### 3. Promise中的then、catch、finally
@@ -482,14 +482,14 @@ promise
   }).catch(err => {
     console.log("catch: ", err);
   })
-复制代码
+
 ```
 
 结果：
 
 ```
 "then: success1"
-复制代码
+
 ```
 
 构造函数中的 `resolve` 或 `reject` 只有第一次执行有效，多次调用没有任何作用 。验证了第一个结论，`Promise`的状态一经改变就不能再改变。
@@ -511,7 +511,7 @@ promise
   }).then(res => {
     console.log("then3: ", res);
   })
-复制代码
+
 ```
 
 结果：
@@ -519,7 +519,7 @@ promise
 ```
 "catch: " "error"
 "then3: " undefined
-复制代码
+
 ```
 
 验证了第三个结论，`catch`不管被连接到哪里，都能捕获上层未捕捉过的错误。
@@ -540,7 +540,7 @@ Promise.resolve(1)
   .then(res => {
     console.log(res);
   });
-复制代码
+
 ```
 
 结果：
@@ -548,7 +548,7 @@ Promise.resolve(1)
 ```
 1
 2
-复制代码
+
 ```
 
 `Promise`可以链式调用，不过`promise` 每次调用 `.then` 或者 `.catch` 都会返回一个新的 `promise`，从而实现了链式调用, 它并不像一般我们任务的链式调用一样`return this`。
@@ -574,7 +574,7 @@ Promise.reject(1)
   .then(res => {
     console.log(res);
   });
-复制代码
+
 ```
 
 结果：
@@ -582,7 +582,7 @@ Promise.reject(1)
 ```
 1
 3
-复制代码
+
 ```
 
 结果打印的当然是 `1 和 3`啦，因为`reject(1)`此时走的就是`catch`，且第二个`then`中的`res`得到的就是`catch`中的返回值。
@@ -603,7 +603,7 @@ promise.then(res => {
 promise.then(res => {
   console.log(res, Date.now() - start)
 })
-复制代码
+
 ```
 
 执行结果：
@@ -612,7 +612,7 @@ promise.then(res => {
 'timer'
 'success' 1001
 'success' 1002
-复制代码
+
 ```
 
 当然，如果你足够快的话，也可能两个都是`1001`。
@@ -629,7 +629,7 @@ Promise.resolve().then(() => {
 }).catch(err => {
   console.log("catch: ", err)
 })
-复制代码
+
 ```
 
 猜猜这里的结果输出的是什么 🤔️ ？
@@ -640,7 +640,7 @@ Promise.resolve().then(() => {
 
 ```
 "then: " "Error: error!!!"
-复制代码
+
 ```
 
 这也验证了第4点和第6点，返回任意一个非 `promise` 的值都会被包裹成 `promise` 对象，因此这里的`return new Error('error!!!')`也被包裹成了`return Promise.resolve(new Error('error!!!'))`。
@@ -651,7 +651,7 @@ Promise.resolve().then(() => {
 return Promise.reject(new Error('error!!!'));
 // or
 throw new Error('error!!!')
-复制代码
+
 ```
 
 #### 3.7 题目七
@@ -661,7 +661,7 @@ const promise = Promise.resolve().then(() => {
   return promise;
 })
 promise.catch(console.err)
-复制代码
+
 ```
 
 `.then` 或 `.catch` 返回的值不能是 promise 本身，否则会造成死循环。
@@ -670,7 +670,7 @@ promise.catch(console.err)
 
 ```
 Uncaught (in promise) TypeError: Chaining cycle detected for promise #<Promise>
-复制代码
+
 ```
 
 #### 3.8 题目八
@@ -690,7 +690,7 @@ Promise.resolve(1)
 
 ```
 1
-复制代码
+
 ```
 
 #### 3.9 题目九
@@ -712,14 +712,14 @@ Promise.reject('err!!!')
   }).catch(err => {
     console.log('catch', err)
   })
-复制代码
+
 ```
 
 这里的执行结果是：
 
 ```
 'error' 'error!!!'
-复制代码
+
 ```
 
 它进入的是`then()`中的第二个参数里面，而如果把第二个参数去掉，就进入了`catch()`中：
@@ -731,14 +731,14 @@ Promise.reject('err!!!')
   }).catch(err => {
     console.log('catch', err)
   })
-复制代码
+
 ```
 
 执行结果：
 
 ```
 'catch' 'error!!!'
-复制代码
+
 ```
 
 但是有一个问题，如果是这个案例呢？
@@ -752,7 +752,7 @@ Promise.resolve()
   }).catch(function fail2 (err) {
     console.log('fail2', err)
   })
-复制代码
+
 ```
 
 由于`Promise`调用的是`resolve()`，因此`.then()`执行的应该是`success()`函数，可是`success()`函数抛出的是一个错误，它会被后面的`catch()`给捕获到，而不是被`fail1`函数捕获。
@@ -762,7 +762,7 @@ Promise.resolve()
 ```
 fail2 Error: error!!!
 			at success
-复制代码
+
 ```
 
 #### 3.10 题目十
@@ -793,7 +793,7 @@ Promise.resolve('2')
   .then(res => {
     console.log('finally2后面的then函数', res)
   })
-复制代码
+
 ```
 
 这两个`Promise`的`.finally`都会执行，且就算`finally2`返回了新的值，它后面的`then()`函数接收到的结果却还是`'2'`，因此打印结果为：
@@ -803,7 +803,7 @@ Promise.resolve('2')
 'finally2'
 'finally'
 'finally2后面的then函数' '2'
-复制代码
+
 ```
 
 至于为什么`finally2`的打印要在`finally`前面，请看下一个例子中的解析。
@@ -822,7 +822,7 @@ Promise.resolve('1')
   .catch(err => {
     console.log('捕获错误', err)
   })
-复制代码
+
 ```
 
 执行结果为：
@@ -830,7 +830,7 @@ Promise.resolve('1')
 ```
 'finally1'
 '捕获错误' Error: 我是finally中抛出的异常
-复制代码
+
 ```
 
 但是如果改为`return new Error('我是finally中抛出的异常')`，打印出来的就是`'finally后面的then函数 1'`
@@ -859,7 +859,7 @@ promise2()
   .then(res => console.log(res))
   .catch(err => console.log(err))
   .finally(() => console.log('finally2'))
-复制代码
+
 ```
 
 执行过程：
@@ -884,7 +884,7 @@ promise2()
 'error'
 'finally1'
 'finally2'
-复制代码
+
 ```
 
 在这道题中其实能拓展的东西挺多的，之前没有提到，那就是你可以理解为**链式调用**后面的内容需要等前一个调用执行完才会执行。
@@ -913,7 +913,7 @@ promise2()
   .then(res => console.log(res))
   .catch(err => console.log(err))
   .then(() => console.log('finally2'))
-复制代码
+
 ```
 
 ### 4. Promise中的all和race
@@ -932,7 +932,7 @@ promise2()
 
 ```
 const p1 = new Promise(r => console.log('立即打印'))
-复制代码
+
 ```
 
 控制台中会立即打印出 “立即打印”。
@@ -946,7 +946,7 @@ function runP1 () {
 }
 
 runP1() // 调用此函数时才执行
-复制代码
+
 ```
 
 OK 👌， 让我们回归正题。
@@ -958,7 +958,7 @@ function runAsync (x) {
     const p = new Promise(r => setTimeout(() => r(x, console.log(x)), 1000))
     return p
 }
-复制代码
+
 ```
 
 该函数传入一个值`x`，然后间隔一秒后打印出这个`x`。
@@ -972,7 +972,7 @@ function runAsync (x) {
 }
 Promise.all([runAsync(1), runAsync(2), runAsync(3)])
   .then(res => console.log(res))
-复制代码
+
 ```
 
 先来想想此段代码在浏览器中会如何执行？
@@ -984,7 +984,7 @@ Promise.all([runAsync(1), runAsync(2), runAsync(3)])
 2
 3
 [1, 2, 3]
-复制代码
+
 ```
 
 所以你现在能理解这句话的意思了吗：**有了all，你就可以并行执行多个异步操作，并且在一个回调中处理所有的返回数据。**
@@ -1015,7 +1015,7 @@ function runReject (x) {
 Promise.all([runAsync(1), runReject(4), runAsync(3), runReject(2)])
   .then(res => console.log(res))
   .catch(err => console.log(err))
-复制代码
+
 ```
 
 不卖关子了 😁，让我来公布答案：
@@ -1029,7 +1029,7 @@ Promise.all([runAsync(1), runReject(4), runAsync(3), runReject(2)])
 Error: 2
 // 4s后输出
 4
-复制代码
+
 ```
 
 没错，就像我之前说的，`.catch`是会捕获最先的那个异常，在这道题目中最先的异常就是`runReject(2)`的结果。
@@ -1044,7 +1044,7 @@ Error: 2
 Promise.all([runAsync(1), runReject(4), runAsync(3), runReject(2)])
   .then(res => console.log(res), 
   err => console.log(err))
-复制代码
+
 ```
 
 #### 4.3 题目三
@@ -1077,7 +1077,7 @@ function runAsync (x) {
 Promise.race([runAsync(1), runAsync(2), runAsync(3)])
   .then(res => console.log('result: ', res))
   .catch(err => console.log(err))
-复制代码
+
 ```
 
 执行结果为：
@@ -1087,7 +1087,7 @@ Promise.race([runAsync(1), runAsync(2), runAsync(3)])
 'result: ' 1
 2
 3
-复制代码
+
 ```
 
 > 这个race有什么用呢？使用场景还是很多的，比如我们可以用race给某个异步请求设置超时时间，并且在超时后执行相应的操作
@@ -1112,7 +1112,7 @@ function runReject(x) {
 Promise.race([runReject(0), runAsync(1), runAsync(2), runAsync(3)])
   .then(res => console.log("result: ", res))
   .catch(err => console.log(err));
-复制代码
+
 ```
 
 遇到错误的话，也是一样的，在这道题中，`runReject(0)`最先执行完，所以进入了`catch()`中：
@@ -1123,7 +1123,7 @@ Promise.race([runReject(0), runAsync(1), runAsync(2), runAsync(3)])
 1
 2
 3
-复制代码
+
 ```
 
 #### 总结
@@ -1152,7 +1152,7 @@ async function async2() {
 }
 async1();
 console.log('start')
-复制代码
+
 ```
 
 这道基础题输出的是啥？
@@ -1164,7 +1164,7 @@ console.log('start')
 'async2'
 'start'
 'async1 end'
-复制代码
+
 ```
 
 过程分析：
@@ -1197,7 +1197,7 @@ async function async2() {
 }
 async1();
 console.log("start")
-复制代码
+
 ```
 
 转换后的伪代码和前面的执行结果是一样的。(感谢评论区[Wing93](https://juejin.im/user/57e0f2738ac2470061745306)和[Jexxie](https://juejin.im/user/5602aa7360b2521f381a3873)小伙伴的指出)
@@ -1214,7 +1214,7 @@ async function async1() {
 }
 async1();
 console.log("start")
-复制代码
+
 ```
 
 此时的执行结果为：
@@ -1224,7 +1224,7 @@ console.log("start")
 'promise'
 'async1 end'
 'start'
-复制代码
+
 ```
 
 可以看到`new Promise()`并不会阻塞后面的同步代码`async1 end`的执行。
@@ -1249,7 +1249,7 @@ async function async2() {
 }
 async1();
 console.log("start")
-复制代码
+
 ```
 
 没错，定时器始终还是最后执行的，它被放到下一条宏任务的延迟队列中。
@@ -1262,7 +1262,7 @@ console.log("start")
 'start'
 'async1 end'
 'timer'
-复制代码
+
 ```
 
 #### 5.3 题目三
@@ -1289,7 +1289,7 @@ setTimeout(() => {
   console.log('timer3')
 }, 0)
 console.log("start")
-复制代码
+
 ```
 
 思考一下🤔，执行结果会是什么？
@@ -1306,7 +1306,7 @@ console.log("start")
 'timer2'
 'timer3'
 'timer1'
-复制代码
+
 ```
 
 定时器谁先执行，你只需要关注谁先被调用的以及延迟时间是多少，这道题中延迟时间都是`0`，所以只要关注谁先被调用的。。
@@ -1324,14 +1324,14 @@ async function fn () {
   return 123
 }
 fn().then(res => console.log(res))
-复制代码
+
 ```
 
 结果：
 
 ```
 123
-复制代码
+
 ```
 
 #### 5.5 题目五
@@ -1348,7 +1348,7 @@ async function async1 () {
 console.log('srcipt start')
 async1().then(res => console.log(res))
 console.log('srcipt end')
-复制代码
+
 ```
 
 这道题目比较有意思，大家要注意了。
@@ -1370,7 +1370,7 @@ console.log('srcipt end')
 'async1 start'
 'promise1'
 'script end'
-复制代码
+
 ```
 
 #### 5.6 题目六
@@ -1390,7 +1390,7 @@ async function async1 () {
 console.log('srcipt start')
 async1().then(res => console.log(res))
 console.log('srcipt end')
-复制代码
+
 ```
 
 现在`Promise`有了返回值了，因此`await`后面的内容将会被执行：
@@ -1403,7 +1403,7 @@ console.log('srcipt end')
 'promise1 resolve'
 'async1 success'
 'async1 end'
-复制代码
+
 ```
 
 #### 5.7 题目七
@@ -1428,7 +1428,7 @@ new Promise(resolve => {
     console.log('timer')
   })
 })
-复制代码
+
 ```
 
 这道题应该也不难，不过有一点需要注意的，在`async1`中的`new Promise`它的`resovle`的值和`async1().then()`里的值是没有关系的，很多小伙伴可能看到`resovle('promise resolve')`就会误以为是`async1().then()`中的返回值。
@@ -1443,7 +1443,7 @@ new Promise(resolve => {
 'async1 success'
 'async1 end'
 'timer'
-复制代码
+
 ```
 
 #### 5.8 题目八
@@ -1476,7 +1476,7 @@ new Promise(function(resolve) {
   console.log("promise2");
 });
 console.log('script end')
-复制代码
+
 ```
 
 有了上面👆几题做基础，相信你很快也能答上来了。
@@ -1498,7 +1498,7 @@ console.log('script end')
 'async1 end'
 'promise2'
 'setTimeout'
-复制代码
+
 ```
 
 (这道题最后`async1 end`和`promise2`的顺序其实在网上饱受争议，我这里使用浏览器`Chrome V80`，`Node v12.16.1`的执行结果都是上面这个答案)
@@ -1536,7 +1536,7 @@ var promise = new Promise(resolve => {
 promise.then(val => console.log(val));
 
 console.log("test end...");
-复制代码
+
 ```
 
 答案：
@@ -1551,7 +1551,7 @@ console.log("test end...");
 'promise'
 'hello async'
 'testSometing' 'hello async'
-复制代码
+
 ```
 
 ### 6. async处理错误
@@ -1573,7 +1573,7 @@ async function async2 () {
   })
 }
 async1().then(res => console.log(res))
-复制代码
+
 ```
 
 例如这道题中，`await`后面跟着的是一个状态为`rejected`的`promise`。
@@ -1585,7 +1585,7 @@ async1().then(res => console.log(res))
 ```
 'async2'
 Uncaught (in promise) error
-复制代码
+
 ```
 
 如果改为`throw new Error`也是一样的：
@@ -1597,7 +1597,7 @@ async function async1 () {
   return 'async1 success'
 }
 async1().then(res => console.log(res))
-复制代码
+
 ```
 
 结果为：
@@ -1605,7 +1605,7 @@ async1().then(res => console.log(res))
 ```
 'async1'
 Uncaught (in promise) Error: error!!!
-复制代码
+
 ```
 
 #### 6.2 题目二
@@ -1624,7 +1624,7 @@ async function async1 () {
 }
 async1().then(res => console.log(res))
 console.log('script start')
-复制代码
+
 ```
 
 这里的结果为：
@@ -1634,7 +1634,7 @@ console.log('script start')
 'error!!!'
 'async1'
 'async1 success'
-复制代码
+
 ```
 
 或者你可以直接在`Promise.reject`后面跟着一个`catch()`方法：
@@ -1653,7 +1653,7 @@ async function async1 () {
 }
 async1().then(res => console.log(res))
 console.log('script start')
-复制代码
+
 ```
 
 运行结果是一样的。
@@ -1685,7 +1685,7 @@ first().then((arg) => {
     console.log(arg);
 });
 console.log(4);
-复制代码
+
 ```
 
 过程分析：
@@ -1713,7 +1713,7 @@ console.log(4);
 2
 5
 Promise{<resolved>: 1}
-复制代码
+
 ```
 
 做对了的小伙伴奖励自己一朵小`(大)`红`(嘴)`花`(巴)`吧，😄
@@ -1749,7 +1749,7 @@ Promise.resolve(1)
 setTimeout(() => {
   console.log('timer2')
 }, 1000)
-复制代码
+
 ```
 
 注意的知识点：
@@ -1768,7 +1768,7 @@ setTimeout(() => {
 1
 'timer2'
 'timer1'
-复制代码
+
 ```
 
 #### 7.3 题目三
@@ -1789,7 +1789,7 @@ const p1 = new Promise((resolve) => {
 }).finally(res => {
   console.log('finally', res)
 })
-复制代码
+
 ```
 
 注意的知识点：
@@ -1805,7 +1805,7 @@ const p1 = new Promise((resolve) => {
 'finally' undefined
 'timer1'
 Promise{<resolved>: undefined}
-复制代码
+
 ```
 
 ### 8. 几道大厂的面试题
@@ -1823,7 +1823,7 @@ arr.reduce((p, x) => {
     })
   })
 }, Promise.resolve())
-复制代码
+
 ```
 
 或者你可以更简单一点写：
@@ -1831,7 +1831,7 @@ arr.reduce((p, x) => {
 ```
 const arr = [1, 2, 3]
 arr.reduce((p, x) => p.then(() => new Promise(r => setTimeout(() => r(console.log(x)), 1000))), Promise.resolve())
-复制代码
+
 ```
 
 参考链接：[如何让异步操作顺序执行](https://segmentfault.com/q/1010000010748967)
@@ -1845,7 +1845,7 @@ arr.reduce((p, x) => p.then(() => new Promise(r => setTimeout(() => r(console.lo
 ```
 const arr = [1, 2, 3];
 const result = arr.reduce((p, x) => p.then(new Promise(r => setTimeout(() => r(console.log(x)), 1000))), Promise.resolve());
-复制代码
+
 ```
 
 眼尖的小伙伴看出区别了吗？😁
@@ -1860,7 +1860,7 @@ const result = arr.reduce((p, x) => p.then(new Promise(r => setTimeout(() => r(c
 1
 2
 3
-复制代码
+
 ```
 
 咦 🤔️？为什么会这样呢 🤔️？
@@ -1874,7 +1874,7 @@ const result = arr.reduce((p, x) => p.then(new Promise(r => setTimeout(() => r(c
 ```
 const arr = [1, 2, 3]
 arr.reduce((p, x) => p.then(() => new Promise(r => setTimeout(() => r(console.log(x)), 1000))), Promise.resolve())
-复制代码
+
 ```
 
 转换为伪代码就是这样：
@@ -1904,7 +1904,7 @@ Promise.resolve()
       }, 1000)
     })
   })
-复制代码
+
 ```
 
 可以看到，每一个`.then`都是依赖于上一个`new Promise`何时被`resolve`了才会执行的，例如第二个`.then()`，它要等`r(console.log(1)`这段代码执行了，才会执行。
@@ -1916,7 +1916,7 @@ Promise.resolve()
 ```
 const arr = [1, 2, 3];
 const result = arr.reduce((p, x) => p.then(new Promise(r => setTimeout(() => r(console.log(x)), 1000))), Promise.resolve());
-复制代码
+
 ```
 
 它的伪代码就是这样：
@@ -1940,7 +1940,7 @@ Promise.resolve()
       r(console.log(3))
     }, 1000)
   }))
-复制代码
+
 ```
 
 `p.then()`里面的参数如果不是函数的话，会发生透传，这个在`3.8`中已经提过了。但是发生透传，`.then()`里的代码就不执行了吗？
@@ -1951,7 +1951,7 @@ Promise.resolve()
 const p = Promise.resolve(1).then(console.log('我不关心结果'))
 console.log(p)
 p.then((res) => console.log(res))
-复制代码
+
 ```
 
 很明显这里也发生了透传，但是`'我不关心结果'`也还是被打印出来了，并且由于透传，`p.then()`里获取到的`res`就是`1`，因此会打印出：
@@ -1963,7 +1963,7 @@ Promise{
 [[PromiseValue]]: 1
 }
 1
-复制代码
+
 ```
 
 (第二行打印出`Promise{<pending>}`的小伙伴请把这个对象展开来看)
@@ -1978,7 +1978,7 @@ Promise{
       r(console.log(1))
     }, 1000)
   }))
-复制代码
+
 ```
 
 中，现在`.then()`中就相当于是执行一段同步代码：
@@ -1989,7 +1989,7 @@ new Promise(r => {
       r(console.log(1))
     }, 1000)
   })
-复制代码
+
 ```
 
 而这段代码的作用是向延迟队列中`push`一个一秒后执行的定时器任务。
@@ -2018,7 +2018,7 @@ function green() {
 function yellow() {
     console.log('yellow');
 }
-复制代码
+
 ```
 
 答案：
@@ -2054,7 +2054,7 @@ const step = function () {
 }
 
 step();
-复制代码
+
 ```
 
 #### 8.3 实现mergePromise函数
@@ -2097,7 +2097,7 @@ mergePromise([ajax1, ajax2, ajax3]).then(data => {
 // 3
 // done
 // [1, 2, 3]
-复制代码
+
 ```
 
 这道题有点类似于`Promise.all()`，不过`.all()`不需要管执行顺序，只需要并发执行就行了。但是这里需要等上一个执行完毕之后才能执行下一个。
@@ -2125,7 +2125,7 @@ function mergePromise (ajaxArray) {
   // 最后得到的promise它的值就是data
   return promise;
 }
-复制代码
+
 ```
 
 #### 8.4 根据promiseA+实现一个自己的promise
@@ -2166,7 +2166,7 @@ function loadImg(url) {
     };
     img.src = url;
   });
-复制代码
+
 ```
 
 #### 8.6 限制异步操作的并发个数并尽可能快的完成全部
@@ -2206,7 +2206,7 @@ function loadImg(url) {
     };
     img.src = url;
   });
-复制代码
+
 ```
 
 看到这道题时，我最开始的想法是：
@@ -2260,7 +2260,7 @@ limitLoad(urls, loadImg, 3).then(res => {
     document.body.appendChild(img);
   })
 });
-复制代码
+
 ```
 
 **想法二**💡：
