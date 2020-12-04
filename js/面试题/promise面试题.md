@@ -1,5 +1,7 @@
 作者：LinDaiDai_霖呆呆链接：来源：[掘金](https://juejin.im/post/5e58c618e51d4526ed66b5cf)
 
+[TOC]
+
 ### 1. Promise的几道基础题
 
 #### 1.1 题目一
