@@ -1,3 +1,5 @@
+[TOC]
+
 # 什么是 JavaScript
 
 JavaScript 实现包含：

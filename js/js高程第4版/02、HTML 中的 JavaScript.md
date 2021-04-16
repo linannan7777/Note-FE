@@ -1,3 +1,5 @@
+[TOC]
+
 # HTML 中的 JavaScript
 
 \<script>元素有下列 8 个属性

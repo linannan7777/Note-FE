@@ -1,3 +1,7 @@
+# Module 的加载实现
+
+上一章介绍了模块的语法，本章介绍如何在浏览器和 Node.js 之中加载 ES6 模块，以及实际开发中经常遇到的一些问题（比如循环加载）。
+
 ## 浏览器加载
 
 ### 传统方法
@@ -50,7 +54,7 @@ HTML 网页中，浏览器通过`<script>`标签加载 JavaScript 脚本。
 
 如果网页有多个`<script type="module">`，它们会按照在页面出现的顺序依次执行。
 
-<script>标签的async属性也可以打开，这时只要加载完成，渲染引擎就会中断渲染立即执行。执行完成后，再恢复渲染。
+`<script>`标签的`async`属性也可以打开，这时只要加载完成，渲染引擎就会中断渲染立即执行。执行完成后，再恢复渲染。
 
 ```html
 <script type="module" src="./foo.js" async></script>
@@ -837,3 +841,4 @@ $ node
 > m.even(10)
 TypeError: even is not a function
 ```
+

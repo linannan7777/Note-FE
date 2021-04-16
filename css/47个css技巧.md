@@ -1,3 +1,5 @@
+[TOC]
+
 # [半透明边框](https://lhammer.cn/You-need-to-know-css/#/zh-cn/translucent-borders?id=半透明边框)
 
 背景知识： [background-clip](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-clip)
