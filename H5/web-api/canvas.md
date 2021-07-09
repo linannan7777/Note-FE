@@ -1,3 +1,5 @@
+[TOC]
+
 # Canvas API
 
 ## 概述
